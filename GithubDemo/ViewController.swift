@@ -12,7 +12,18 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        GithubRepo.fetchRepos({ (repos) -> Void in
+            for repo in repos {
+                println("[Name: \(repo.name!)]" +
+                    "\n\t[Stars: \(repo.stars!)]" +
+                    "\n\t[Forks: \(repo.forks!)]" +
+                    "\n\t[Owner: \(repo.ownerHandle!)]" +
+                    "\n\t[Avatar: \(repo.ownerAvatarURL!)]")
+            }
+        }, error: { (error) -> Void in
+            println(error)
+        })
     }
 
     override func didReceiveMemoryWarning() {
