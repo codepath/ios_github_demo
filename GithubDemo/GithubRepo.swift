@@ -8,9 +8,7 @@
 
 import Foundation
 
-private let params = []
-private let query: String! = "stars:>0".stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding);
-private let resourceUrl = "https://api.github.com/search/repositories?q=\(query)&sort=stars&order=desc"
+private let reposUrl = "https://api.github.com/search/repositories"
 
 class GithubRepo {
     var name: String?
@@ -43,12 +41,27 @@ class GithubRepo {
         }
     }
     
-    class func fetchRepos(successCallback: ([GithubRepo]) -> Void, error: ((NSError?) -> Void)?) {
+    private class func queryParamsWithSettings(settings: GithubRepoSearchSettings) -> [String: String] {
+        var params: [String:String] = [:];
+        
+        var q = "";
+        if let searchString = settings.searchString {
+            q = q + searchString;
+        }
+        q = q + " stars:>\(settings.minStars)";
+        params["q"] = q;
+        
+        params["sort"] = "stars";
+        params["order"] = "desc";
+        
+        return params;
+    }
+    
+    class func fetchRepos(settings: GithubRepoSearchSettings, successCallback: ([GithubRepo]) -> Void, error: ((NSError?) -> Void)?) {
         let manager = AFHTTPRequestOperationManager()
+        let params = queryParamsWithSettings(settings);
         
-        println(resourceUrl)
-        
-        manager.GET(resourceUrl, parameters: params, success: { (operation ,responseObject) -> Void in
+        manager.GET(reposUrl, parameters: params, success: { (operation ,responseObject) -> Void in
             if let results = responseObject["items"] as? NSArray {
                 var repos: [GithubRepo] = []
                 for result in results as [NSDictionary] {

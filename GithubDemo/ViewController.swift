@@ -9,11 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var searchSettings = GithubRepoSearchSettings()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchSettings.searchString = "ios";
         
-        GithubRepo.fetchRepos({ (repos) -> Void in
+        GithubRepo.fetchRepos(searchSettings, { (repos) -> Void in
             for repo in repos {
                 println("[Name: \(repo.name!)]" +
                     "\n\t[Stars: \(repo.stars!)]" +
