@@ -208,6 +208,61 @@
                                             <outlet property="valueLabel" destination="qX4-4z-bKa" id="Dhr-Kn-4cj"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" id="xSN-Lx-xCI" customClass="SwitchCell" customModule="GithubDemo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xSN-Lx-xCI" id="UiX-Wo-Hd9">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K35-yE-Uau">
+                                                    <rect key="frame" x="263" y="8" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="didToggleSwitch:" destination="xSN-Lx-xCI" eventType="valueChanged" id="xzr-x7-7bX"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yys-wf-Vfq">
+                                                    <rect key="frame" x="8" y="13" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Yys-wf-Vfq" firstAttribute="leading" secondItem="UiX-Wo-Hd9" secondAttribute="leadingMargin" id="3Ey-Gu-NmJ"/>
+                                                <constraint firstItem="K35-yE-Uau" firstAttribute="centerY" secondItem="Yys-wf-Vfq" secondAttribute="centerY" id="BU0-lq-VSB"/>
+                                                <constraint firstItem="K35-yE-Uau" firstAttribute="top" secondItem="UiX-Wo-Hd9" secondAttribute="topMargin" id="I62-T8-6yz"/>
+                                                <constraint firstItem="K35-yE-Uau" firstAttribute="trailing" secondItem="UiX-Wo-Hd9" secondAttribute="trailingMargin" id="ldJ-6s-GHE"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="Yys-wf-Vfq" id="w7r-Bw-zRp"/>
+                                            <outlet property="onOffSwitch" destination="K35-yE-Uau" id="q5L-UD-f1k"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheckMarkCell" id="LIC-kW-IXv" customClass="CheckMarkCell" customModule="GithubDemo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LIC-kW-IXv" id="BZA-8F-XL6">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UZ-CN-7pn">
+                                                    <rect key="frame" x="8" y="13" width="42" height="23"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="5UZ-CN-7pn" firstAttribute="leading" secondItem="BZA-8F-XL6" secondAttribute="leadingMargin" id="RJB-WK-OaT"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="5UZ-CN-7pn" secondAttribute="bottom" constant="5" id="Ym1-H3-HZE"/>
+                                                <constraint firstItem="5UZ-CN-7pn" firstAttribute="top" secondItem="BZA-8F-XL6" secondAttribute="topMargin" constant="5" id="clT-QH-I5W"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="5UZ-CN-7pn" id="0Nl-Tg-UY9"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
