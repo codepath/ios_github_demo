@@ -9,11 +9,10 @@
 import Foundation
 
 
-class GithubRepoSearchSettings {
-    var searchString: String?
+struct GithubRepoSearchSettings {
+    var searchString: String? = nil
     var minStars = 0
-    
-    init() {
-        
-    }
+    var shouldFilterLanguages = false;
+    let languages = ["Java", "JavaScript", "Objective-C", "Python", "Ruby", "Swift"]
+    var includeLanguage = [true, true, true, true, true, true]
 }

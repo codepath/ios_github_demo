@@ -36,20 +36,31 @@ class ViewController: UIViewController {
     private func doSearch() {
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         GithubRepo.fetchRepos(searchSettings, successCallback: { (repos) -> Void in
-            for repo in repos {
-                println("[Name: \(repo.name!)]" +
-                    "\n\t[Stars: \(repo.stars!)]" +
-                    "\n\t[Forks: \(repo.forks!)]" +
-                    "\n\t[Owner: \(repo.ownerHandle!)]" +
-                    "\n\t[Avatar: \(repo.ownerAvatarURL!)]")
-                println("\t[description: \(repo.description!)]")
-            }
             self.repositories = repos
             self.tableView.reloadData()
             MBProgressHUD.hideHUDForView(self.view, animated: true)
         }, error: { (error) -> Void in
             println(error)
         })
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "settingsSegue" {
+            // we wrapped our SearchSettingsViewController inside a UINavigationController
+            let navController = segue.destinationViewController as UINavigationController
+            let settingsVC = navController.topViewController as SearchSettingsViewController
+            settingsVC.settings = self.searchSettings
+        }
+    }
+    
+    @IBAction func didSaveSettings(segue: UIStoryboardSegue) {
+        let settingsVC = segue.sourceViewController as SearchSettingsViewController
+        searchSettings = settingsVC.settings
+        doSearch()
+    }
+    
+    @IBAction func didCancelSettingChanges(segue: UIStoryboardSegue) {
+        
     }
 }
 

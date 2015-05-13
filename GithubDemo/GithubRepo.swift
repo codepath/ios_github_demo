@@ -26,15 +26,11 @@ class GithubRepo {
             self.name = name
         }
         
-<<<<<<< HEAD
-        if let stars = jsonResult["stargazers_count"] as? Int? {
-=======
         if let description = jsonResult["description"] as? String {
             self.description = description
         }
         
-        if let stars = jsonResult["stargazers_count"] as Int? {
->>>>>>> Parsed description
+        if let stars = jsonResult["stargazers_count"] as? Int? {
             self.stars = stars
         }
         
@@ -86,6 +82,15 @@ class GithubRepo {
             q = q + searchString;
         }
         q = q + " stars:>\(settings.minStars)";
+        
+        if settings.shouldFilterLanguages {
+            for (index, language) in enumerate(settings.languages) {
+                if settings.includeLanguage[index] {
+                    q = q + " language:\"\(language)\""
+                }
+            }
+        }
+        
         params["q"] = q;
         
         params["sort"] = "stars";
