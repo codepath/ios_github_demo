@@ -16,6 +16,11 @@ class GithubRepoCell: UITableViewCell {
     @IBOutlet weak var forksLabel: UILabel!
     @IBOutlet weak var ownerAvatarImage: UIImageView!
     
+    override func awakeFromNib() {
+        descriptionLabel.preferredMaxLayoutWidth = descriptionLabel.frame.size.width
+        nameLabel.preferredMaxLayoutWidth = nameLabel.frame.size.width
+    }
+    
     func setContentWithRepo(repo: GithubRepo) {
         nameLabel.text = repo.name
         ownerLabel.text = repo.ownerHandle
@@ -32,6 +37,5 @@ class GithubRepoCell: UITableViewCell {
             ownerAvatarImage.setImageWithURL(ownerAvatarURL)
         }
         descriptionLabel.text = repo.description
-        layoutIfNeeded()
     }
 }
