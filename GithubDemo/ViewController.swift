@@ -9,11 +9,18 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var tableView: UITableView!
     var searchBar: UISearchBar!
     var searchSettings = GithubRepoSearchSettings()
-
+    var repositories: [GithubRepo] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.estimatedRowHeight = 150
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         // initialize UISearchBar
         searchBar = UISearchBar()
@@ -37,6 +44,8 @@ class ViewController: UIViewController {
                     "\n\t[Avatar: \(repo.ownerAvatarURL!)]")
                 println("\t[description: \(repo.description!)]")
             }
+            self.repositories = repos
+            self.tableView.reloadData()
             MBProgressHUD.hideHUDForView(self.view, animated: true)
         }, error: { (error) -> Void in
             println(error)
@@ -64,5 +73,22 @@ extension ViewController: UISearchBarDelegate {
         searchSettings.searchString = searchBar.text
         searchBar.resignFirstResponder()
         doSearch()
+    }
+}
+
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        searchBar.resignFirstResponder()
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return repositories.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("GithubRepoCell") as GithubRepoCell
+        cell.setContentWithRepo(repositories[indexPath.row])
+        return cell
     }
 }
