@@ -10,6 +10,7 @@
 #define GithubDemo_BridgingHeader_h
 
 #import <AFNetworking.h>
+#import <MBProgressHUD.h>
 #import <UIImageView+AFNetworking.h>
 
 #endif

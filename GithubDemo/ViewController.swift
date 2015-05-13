@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     }
     
     private func doSearch() {
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         GithubRepo.fetchRepos(searchSettings, { (repos) -> Void in
             for repo in repos {
                 println("[Name: \(repo.name!)]" +
@@ -35,6 +36,7 @@ class ViewController: UIViewController {
                     "\n\t[Owner: \(repo.ownerHandle!)]" +
                     "\n\t[Avatar: \(repo.ownerAvatarURL!)]")
             }
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
         }, error: { (error) -> Void in
             println(error)
         })
