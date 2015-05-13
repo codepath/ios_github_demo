@@ -14,6 +14,7 @@ private let clientSecret: String? = nil
 
 class GithubRepo {
     var name: String?
+    var description: String?
     var ownerHandle: String?
     var ownerAvatarURL: String?
     var stars: Int?
@@ -25,7 +26,15 @@ class GithubRepo {
             self.name = name
         }
         
+<<<<<<< HEAD
         if let stars = jsonResult["stargazers_count"] as? Int? {
+=======
+        if let description = jsonResult["description"] as? String {
+            self.description = description
+        }
+        
+        if let stars = jsonResult["stargazers_count"] as Int? {
+>>>>>>> Parsed description
             self.stars = stars
         }
         
