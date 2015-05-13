@@ -9,12 +9,24 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var searchBar: UISearchBar!
     var searchSettings = GithubRepoSearchSettings()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchSettings.searchString = "ios";
         
+        // initialize UISearchBar
+        searchBar = UISearchBar()
+        searchBar.delegate = self
+        
+        // add search bar to navigation bar
+        searchBar.sizeToFit()
+        navigationItem.titleView = searchBar
+        
+        doSearch()
+    }
+    
+    private func doSearch() {
         GithubRepo.fetchRepos(searchSettings, { (repos) -> Void in
             for repo in repos {
                 println("[Name: \(repo.name!)]" +
@@ -27,12 +39,27 @@ class ViewController: UIViewController {
             println(error)
         })
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 
+extension ViewController: UISearchBarDelegate {
+    func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
+        searchBar.setShowsCancelButton(true, animated: true)
+        return true;
+    }
+    
+    func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
+        searchBar.setShowsCancelButton(false, animated: true)
+        return true;
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchSettings.searchString = searchBar.text
+        searchBar.resignFirstResponder()
+        doSearch()
+    }
+}
