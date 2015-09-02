@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     
     private func doSearch() {
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        GithubRepo.fetchRepos(searchSettings, { (repos) -> Void in
+        GithubRepo.fetchRepos(searchSettings, successCallback: { (repos) -> Void in
             for repo in repos {
                 println("[Name: \(repo.name!)]" +
                     "\n\t[Stars: \(repo.stars!)]" +
