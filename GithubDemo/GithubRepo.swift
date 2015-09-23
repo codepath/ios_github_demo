@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AFNetworking
 
 private let reposUrl = "https://api.github.com/search/repositories"
 private let clientId: String? = nil

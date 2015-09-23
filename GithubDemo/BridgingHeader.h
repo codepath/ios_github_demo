@@ -9,8 +9,6 @@
 #ifndef GithubDemo_BridgingHeader_h
 #define GithubDemo_BridgingHeader_h
 
-#import <AFNetworking.h>
-#import <MBProgressHUD.h>
-#import <UIImageView+AFNetworking.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 #endif
