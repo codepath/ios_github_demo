@@ -13,7 +13,7 @@ private let reposUrl = "https://api.github.com/search/repositories"
 private let clientId: String? = nil
 private let clientSecret: String? = nil
 
-class GithubRepo {
+class GithubRepo: CustomStringConvertible {
     var name: String?
     var ownerHandle: String?
     var ownerAvatarURL: String?
@@ -84,5 +84,13 @@ class GithubRepo {
         params["order"] = "desc";
         
         return params;
+    }
+
+    var description: String {
+        return "[Name: \(self.name!)]" +
+            "\n\t[Stars: \(self.stars!)]" +
+            "\n\t[Forks: \(self.forks!)]" +
+            "\n\t[Owner: \(self.ownerHandle!)]" +
+            "\n\t[Avatar: \(self.ownerAvatarURL!)]"
     }
 }
