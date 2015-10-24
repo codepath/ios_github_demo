@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2E1D083C73FC177474941B1A /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34CBA2B0A0E031A1D298899E /* Pods.framework */; };
 		6B2DDEEE1B02911A00D25281 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2DDEED1B02911A00D25281 /* AppDelegate.swift */; };
-		6B2DDEF01B02911A00D25281 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2DDEEF1B02911A00D25281 /* ViewController.swift */; };
+		6B2DDEF01B02911A00D25281 /* RepoResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2DDEEF1B02911A00D25281 /* RepoResultsViewController.swift */; };
 		6B2DDEF31B02911A00D25281 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B2DDEF11B02911A00D25281 /* Main.storyboard */; };
 		6B2DDEF51B02911A00D25281 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B2DDEF41B02911A00D25281 /* Images.xcassets */; };
 		6B2DDEF81B02911A00D25281 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B2DDEF61B02911A00D25281 /* LaunchScreen.xib */; };
@@ -33,7 +33,7 @@
 		6B2DDEE81B02911A00D25281 /* GithubDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B2DDEEC1B02911A00D25281 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B2DDEED1B02911A00D25281 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6B2DDEEF1B02911A00D25281 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6B2DDEEF1B02911A00D25281 /* RepoResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoResultsViewController.swift; sourceTree = "<group>"; };
 		6B2DDEF21B02911A00D25281 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6B2DDEF41B02911A00D25281 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6B2DDEF71B02911A00D25281 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				6B2DDEED1B02911A00D25281 /* AppDelegate.swift */,
-				6B2DDEEF1B02911A00D25281 /* ViewController.swift */,
+				6B2DDEEF1B02911A00D25281 /* RepoResultsViewController.swift */,
 				6B2DDF0D1B02970A00D25281 /* GithubRepo.swift */,
 				6B9F8B091B02B8E4001483E7 /* GithubRepoSearchSettings.swift */,
 				6B2DDF0F1B0298B000D25281 /* BridgingHeader.h */,
@@ -296,7 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B2DDEF01B02911A00D25281 /* ViewController.swift in Sources */,
+				6B2DDEF01B02911A00D25281 /* RepoResultsViewController.swift in Sources */,
 				6B9F8B0A1B02B8E5001483E7 /* GithubRepoSearchSettings.swift in Sources */,
 				6B2DDEEE1B02911A00D25281 /* AppDelegate.swift in Sources */,
 				6B2DDF0E1B02970A00D25281 /* GithubRepo.swift in Sources */,

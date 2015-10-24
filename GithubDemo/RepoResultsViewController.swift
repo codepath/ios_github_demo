@@ -9,24 +9,24 @@
 import UIKit
 import MBProgressHUD
 
-class ViewController: UIViewController {
+class RepoResultsViewController: UIViewController {
     var searchBar: UISearchBar!
     var searchSettings = GithubRepoSearchSettings()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // initialize UISearchBar
         searchBar = UISearchBar()
         searchBar.delegate = self
-        
+
         // add search bar to navigation bar
         searchBar.sizeToFit()
         navigationItem.titleView = searchBar
-        
+
         doSearch()
     }
-    
+
     private func doSearch() {
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         GithubRepo.fetchRepos(searchSettings, successCallback: { (repos) -> Void in
@@ -40,22 +40,22 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UISearchBarDelegate {
+extension RepoResultsViewController: UISearchBarDelegate {
     func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
         searchBar.setShowsCancelButton(true, animated: true)
         return true;
     }
-    
+
     func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
         searchBar.setShowsCancelButton(false, animated: true)
         return true;
     }
-    
+
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.text = ""
         searchBar.resignFirstResponder()
     }
-    
+
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchSettings.searchString = searchBar.text
         searchBar.resignFirstResponder()
