@@ -13,14 +13,16 @@ private let reposUrl = "https://api.github.com/search/repositories"
 private let clientId: String? = nil
 private let clientSecret: String? = nil
 
+// Model class that represents a GitHub repository
 class GithubRepo: CustomStringConvertible {
+
     var name: String?
     var ownerHandle: String?
     var ownerAvatarURL: String?
     var stars: Int?
     var forks: Int?
     
-    
+    // Initializes a GitHubRepo from a JSON dictionary
     init(jsonResult: NSDictionary) {
         if let name = jsonResult["name"] as? String {
             self.name = name
@@ -44,6 +46,8 @@ class GithubRepo: CustomStringConvertible {
         }
     }
     
+    // Actually fetch the list of repositories from the GitHub API.
+    // Calls successCallback(...) if the request is successful
     class func fetchRepos(settings: GithubRepoSearchSettings, successCallback: ([GithubRepo]) -> Void, error: ((NSError?) -> Void)?) {
         let manager = AFHTTPRequestOperationManager()
         let params = queryParamsWithSettings(settings);
@@ -63,6 +67,8 @@ class GithubRepo: CustomStringConvertible {
         })
     }
     
+    // Helper method that constructs a dictionary of the query parameters used in the request to the
+    // GitHub API
     private class func queryParamsWithSettings(settings: GithubRepoSearchSettings) -> [String: String] {
         var params: [String:String] = [:];
         if let clientId = clientId {
@@ -86,6 +92,7 @@ class GithubRepo: CustomStringConvertible {
         return params;
     }
 
+    // Creates a text representation of a GitHub repo
     var description: String {
         return "[Name: \(self.name!)]" +
             "\n\t[Stars: \(self.stars!)]" +
