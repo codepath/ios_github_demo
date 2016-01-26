@@ -41,7 +41,6 @@
 		6B2DDF021B02911A00D25281 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B2DDF031B02911A00D25281 /* GithubDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubDemoTests.swift; sourceTree = "<group>"; };
 		6B2DDF0D1B02970A00D25281 /* GithubRepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubRepo.swift; sourceTree = "<group>"; };
-		6B2DDF0F1B0298B000D25281 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		6B9F8B091B02B8E4001483E7 /* GithubRepoSearchSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubRepoSearchSettings.swift; sourceTree = "<group>"; };
 		8DE147C3212B96A86B7D0D73 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D98FBEA28584B029201B4EE3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,7 +109,6 @@
 				6B2DDEEF1B02911A00D25281 /* RepoResultsViewController.swift */,
 				6B2DDF0D1B02970A00D25281 /* GithubRepo.swift */,
 				6B9F8B091B02B8E4001483E7 /* GithubRepoSearchSettings.swift */,
-				6B2DDF0F1B0298B000D25281 /* BridgingHeader.h */,
 				6B2DDEF11B02911A00D25281 /* Main.storyboard */,
 				6B2DDEF41B02911A00D25281 /* Images.xcassets */,
 				6B2DDEF61B02911A00D25281 /* LaunchScreen.xib */,
@@ -428,7 +426,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = GithubDemo/BridgingHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
 		};
@@ -441,7 +439,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = GithubDemo/BridgingHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
