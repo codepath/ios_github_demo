@@ -48,48 +48,48 @@ class GithubRepo: CustomStringConvertible {
     
     // Actually fetch the list of repositories from the GitHub API.
     // Calls successCallback(...) if the request is successful
-    class func fetchRepos(settings: GithubRepoSearchSettings, successCallback: ([GithubRepo]) -> Void, error: ((NSError?) -> Void)?) {
+    class func fetchRepos(_ settings: GithubRepoSearchSettings, successCallback: @escaping ([GithubRepo]) -> (), error: ((Error?) -> ())?) {
         let manager = AFHTTPRequestOperationManager()
-        let params = queryParamsWithSettings(settings);
-        
-        manager.GET(reposUrl, parameters: params, success: { (operation ,responseObject) -> Void in
-            if let results = responseObject["items"] as? NSArray {
+        let params = queryParamsWithSettings(settings)
+
+        manager.get(reposUrl, parameters: params, success: { (operation: AFHTTPRequestOperation, responseObject: Any) in
+            if let response = responseObject as? NSDictionary, let results = response["items"] as? NSArray {
                 var repos: [GithubRepo] = []
                 for result in results as! [NSDictionary] {
                     repos.append(GithubRepo(jsonResult: result))
                 }
                 successCallback(repos)
             }
-        }, failure: { (operation, requestError) -> Void in
+        }) { (operation: AFHTTPRequestOperation, requestError: Error) in
             if let errorCallback = error {
                 errorCallback(requestError)
             }
-        })
+        }
     }
     
     // Helper method that constructs a dictionary of the query parameters used in the request to the
     // GitHub API
-    private class func queryParamsWithSettings(settings: GithubRepoSearchSettings) -> [String: String] {
-        var params: [String:String] = [:];
+    fileprivate class func queryParamsWithSettings(_ settings: GithubRepoSearchSettings) -> [String: String] {
+        var params: [String:String] = [:]
         if let clientId = clientId {
-            params["client_id"] = clientId;
+            params["client_id"] = clientId
         }
         
         if let clientSecret = clientSecret {
-            params["client_secret"] = clientSecret;
+            params["client_secret"] = clientSecret
         }
         
-        var q = "";
+        var q = ""
         if let searchString = settings.searchString {
-            q = q + searchString;
+            q = q + searchString
         }
-        q = q + " stars:>\(settings.minStars)";
-        params["q"] = q;
+        q = q + " stars:>\(settings.minStars)"
+        params["q"] = q
         
-        params["sort"] = "stars";
-        params["order"] = "desc";
+        params["sort"] = "stars"
+        params["order"] = "desc"
         
-        return params;
+        return params
     }
 
     // Creates a text representation of a GitHub repo
